@@ -1,21 +1,18 @@
-class bancosController {
-    constructor(dolarSiService, util) {
-        this.dolarSiService = dolarSiService
-        this.util = util
-    }
+const dolarSiService = require('../services/dolarSiService');
+const util = require('../util/util');
 
-
+class BancosController {
     /**
      * @description Obtener las cotizaciones del Banco BBVA
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarBBVA = async (req, res) => {
+    async getDolarBBVA(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar();
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa336.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa336.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa336.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa336.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -29,13 +26,13 @@ class bancosController {
      * @description Obtener las cotizaciones del Banco Piano
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarPiano = async (req, res) => {
+    async getDolarPiano(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa37.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa37.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa37.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa37.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -49,13 +46,13 @@ class bancosController {
      * @description Obtener las cotizaciones del Banco Hipotecario
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarHipotecario = async (req, res) => {
+    async getDolarHipotecario(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa217.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa217.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa217.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa217.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -69,13 +66,13 @@ class bancosController {
      * @description Obtener las cotizaciones del Banco Galicia
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarGalicia = async (req, res) => {
+    async getDolarGalicia(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa342.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa342.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa342.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa342.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -89,13 +86,13 @@ class bancosController {
      * @description Obtener las cotizaciones del Banco Santander
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarSantander = async (req, res) => {
+    async getDolarSantander(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa401.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa401.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa401.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa401.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -109,13 +106,13 @@ class bancosController {
      * @description Obtener las cotizaciones del Banco Ciudad de Buenos Aires
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarCiudad = async (req, res) => {
+    async getDolarCiudad(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa402.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa402.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa402.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa402.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -129,13 +126,13 @@ class bancosController {
      * @description Obtener las cotizaciones del Banco Supervielle
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarSupervielle = async (req, res) => {
+    async getDolarSupervielle(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa403.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa403.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa403.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa403.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -149,13 +146,13 @@ class bancosController {
      * @description Obtener las cotizaciones del Banco Patagonia
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarPatagonia = async (req, res) => {
+    async getDolarPatagonia(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa404.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa404.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa404.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa404.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -169,13 +166,13 @@ class bancosController {
      * @description Obtener las cotizaciones del Banco Comafi
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarComafi = async (req, res) => {
+    async getDolarComafi(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa405.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa405.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa405.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa405.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -188,13 +185,13 @@ class bancosController {
      * @description Obtener las cotizaciones del Banco Nación
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarNacion = async (req, res) => {
+    async getDolarNacion(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa6.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa6.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa6.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa6.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -207,13 +204,13 @@ class bancosController {
      * @description Obtener las cotizaciones del Banco Industrial
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarBIND = async (req, res) => {
+    async getDolarBIND(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa22.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa22.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa22.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa22.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -226,13 +223,13 @@ class bancosController {
      * @description Obtener las cotizaciones del Nuevo Banco del Chaco
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarChaco = async (req, res) => {
+    async getDolarChaco(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa334.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa334.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa334.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa334.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -245,13 +242,13 @@ class bancosController {
      * @description Obtener las cotizaciones del Banco de La Pampa
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarPampa = async (req, res) => {
+    async getDolarPampa(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa335.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa335.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa335.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa335.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -264,13 +261,13 @@ class bancosController {
      * @description Obtener las cotizaciones del Banco de Córdoba
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarBancor = async (req, res) => {
+    async getDolarBancor(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Capital_Federal.casa341.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Capital_Federal.casa341.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Capital_Federal.casa341.compra._text),
+                venta: util.formatNumber(data.cotiza.Capital_Federal.casa341.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -283,13 +280,13 @@ class bancosController {
      * @description Obtener las cotizaciones de Mayorista Bancos
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-     getDolarMayorista = async (req, res) => {
+    async getDolarMayorista(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Dolar.casa44.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Dolar.casa44.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Dolar.casa44.compra._text),
+                venta: util.formatNumber(data.cotiza.Dolar.casa44.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -299,4 +296,24 @@ class bancosController {
     }
 }
 
-module.exports = bancosController
+
+const bancosController = new BancosController();
+const bancosControllerMap = {
+    bbva: bancosController.getDolarBBVA,
+    piano: bancosController.getDolarPiano,
+    hipotecario: bancosController.getDolarHipotecario,
+    galicia: bancosController.getDolarGalicia,
+    santander: bancosController.getDolarSantander,
+    ciudad: bancosController.getDolarCiudad,
+    supervielle: bancosController.getDolarSupervielle,
+    patagonia: bancosController.getDolarPatagonia,
+    comafi: bancosController.getDolarComafi,
+    nacion: bancosController.getDolarNacion,
+    bind: bancosController.getDolarBIND,
+    chaco: bancosController.getDolarChaco,
+    pampa: bancosController.getDolarPampa,
+    bancor: bancosController.getDolarBancor,
+    mayorista: bancosController.getDolarMayorista,
+};
+
+module.exports = { bancosControllerMap, bancosController };

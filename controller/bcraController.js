@@ -1,22 +1,20 @@
-class bcraController {
-    constructor(dolarSiService, util) {
-        this.dolarSiService = dolarSiService
-        this.util = util
-    }
+const dolarSiService = require('../services/dolarSiService');
+const util = require('../util/util');
 
+class BcraController {
     /**
      * @description Obtener el valor de las reservas del BCRA expresadas en dólares.
      * @returns Un objeto con el valor de las reservas, la moneda y la fecha-hora de la consulta
      */
-    getReservas = async (req, res) => {
+    async getReservas(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
-            let reservasDolares = this.util.formatNumber(data.cotiza.Reservas_y_circulante.casa394.compra._text)
-            if(reservasDolares !== '?'){
+            const data = await dolarSiService.getInfoDolar()
+            let reservasDolares = util.formatNumber(data.cotiza.Reservas_y_circulante.casa394.compra._text)
+            if (reservasDolares !== '?') {
                 reservasDolares = BigInt(reservasDolares * 1000) * BigInt(1000000)
             }
             const valores = {
-                fecha: this.util.getDateTime(),
+                fecha: util.getDateTime(),
                 valor: reservasDolares.toString(),
                 moneda: "USD"
             }
@@ -28,19 +26,19 @@ class bcraController {
         }
     }
 
-        /**
-     * @description Obtener el valor del total circulante expresado en pesos argentinos.
-     * @returns Un objeto con el valor del circulante, la moneda y la fecha-hora de la consulta
-     */
-    getCirculante = async (req, res) => {
+    /**
+ * @description Obtener el valor del total circulante expresado en pesos argentinos.
+ * @returns Un objeto con el valor del circulante, la moneda y la fecha-hora de la consulta
+ */
+    async getCirculante(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
-            let circulantePesos = this.util.formatNumber(data.cotiza.Reservas_y_circulante.casa395.compra._text)
-            if(circulantePesos !== '?'){
+            const data = await dolarSiService.getInfoDolar()
+            let circulantePesos = util.formatNumber(data.cotiza.Reservas_y_circulante.casa395.compra._text)
+            if (circulantePesos !== '?') {
                 circulantePesos = BigInt(circulantePesos * 1000) * BigInt(1000000)
             }
             const valores = {
-                fecha: this.util.getDateTime(),
+                fecha: util.getDateTime(),
                 valor: circulantePesos.toString(),
                 moneda: "ARS"
             }
@@ -53,4 +51,9 @@ class bcraController {
     }
 }
 
-module.exports = bcraController
+const bcraController = new BcraController();
+const bcraControllerMap = {
+    reservas: bcraController.getReservas,
+    circulante: bcraController.getCirculante,
+};
+module.exports = { bcraControllerMap, bcraController };

@@ -1,11 +1,11 @@
-class util {
+class Util {
 
     /**
      * Obtiene la fecha y hora actual formateada.
      */
     getDateTime = function () {
-        let now = new Date();
-        let year = now.getFullYear();
+        const now = new Date();
+        const year = now.getFullYear();
         let month = now.getMonth() + 1;
         let day = now.getDate();
         let hour = now.getHours();
@@ -17,7 +17,7 @@ class util {
         (minute.toString().length == 1) ? minute = '0' + minute : '';
         (second.toString().length == 1) ? second = '0' + second : '';
 
-        let dateTime = year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
+        const dateTime = year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
         return dateTime;
     }
 
@@ -27,8 +27,8 @@ class util {
      * @param {number} decimalPlaces Cantidad de caracteres decimales a conservar.
      */
     formatNumber = function (value, decimalPlaces) {
-        let decimals = decimalPlaces || 2;
-        let convertedValue = parseFloat(value.replace('.', '').replace(',', '.'))
+        const decimals = decimalPlaces || 2;
+        const convertedValue = parseFloat(value.replace('.', '').replace(',', '.'))
         return !isNaN(convertedValue) ? convertedValue.toFixed(decimals) : 'No cotiza'
     }
 
@@ -57,6 +57,16 @@ class util {
 
         return valores
     }
+
+    async setRoute(req, res, mapController) {
+        const { type } = req.params;
+        const method = mapController[type];
+        if (method) {
+            await method(req, res);
+        } else {
+            res.sendStatus(404);
+        }
+    }
 }
 
-module.exports = util
+module.exports = new Util()

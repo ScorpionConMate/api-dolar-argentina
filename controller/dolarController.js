@@ -1,17 +1,16 @@
-class dolarController {
-    constructor(dolarSiService, util) {
-        this.dolarSiService = dolarSiService
-        this.util = util
-    }
+const dolarSiService = require('../services/dolarSiService');
+const util = require('../util/util');
+
+class DolarController {
 
     /**
      * @description Obtener todos los valores
      * @returns Todos los valores
      */
-     getAllValues = async (req, res) => {
+    async getAllValues(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()            
-            const valores = { valores : data.cotiza }
+            const data = await dolarSiService.getInfoDolar()
+            const valores = { valores: data.cotiza }
             res.send(valores)
 
         } catch (e) {
@@ -24,13 +23,13 @@ class dolarController {
      * @description Obtener el valor del dolar oficial
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarOficial = async (req, res) => {
+    async getDolarOficial(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Dolar.casa344.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Dolar.casa344.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Dolar.casa344.compra._text),
+                venta: util.formatNumber(data.cotiza.Dolar.casa344.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -44,13 +43,13 @@ class dolarController {
      * @description Obtener el valor del dolar blue
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarBlue = async (req, res) => {
+    async getDolarBlue(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Dolar.casa380.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Dolar.casa380.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Dolar.casa380.compra._text),
+                venta: util.formatNumber(data.cotiza.Dolar.casa380.venta._text)
             }
 
             res.send(valores)
@@ -65,13 +64,13 @@ class dolarController {
      * @description Obtener el valor del dolar contado con liqui
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getContadoConLiqui = async (req, res) => {
+    async getContadoConLiqui(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.valores_principales.casa312.compra._text),
-                venta: this.util.formatNumber(data.cotiza.valores_principales.casa312.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.valores_principales.casa312.compra._text),
+                venta: util.formatNumber(data.cotiza.valores_principales.casa312.venta._text)
             }
 
             res.send(valores)
@@ -86,13 +85,13 @@ class dolarController {
      * @description Obtener el valor del dolar promedio
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarPromedio = async (req, res) => {
+    async getDolarPromedio(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.cotizador.casa302.compra._text),
-                venta: this.util.formatNumber(data.cotiza.cotizador.casa302.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.cotizador.casa302.compra._text),
+                venta: util.formatNumber(data.cotiza.cotizador.casa302.venta._text)
             }
 
             res.send(valores)
@@ -107,13 +106,13 @@ class dolarController {
      * @description Obtener el valor del dolar bolsa
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarBolsa = async (req, res) => {
+    async getDolarBolsa(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.valores_principales.casa313.compra._text),
-                venta: this.util.formatNumber(data.cotiza.valores_principales.casa313.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.valores_principales.casa313.compra._text),
+                venta: util.formatNumber(data.cotiza.valores_principales.casa313.venta._text)
             }
 
             res.send(valores)
@@ -127,10 +126,10 @@ class dolarController {
      * @description Obtiene la evolución anual del valor del dolar oficial
      * @returns Un objeto con el valor promedio por mes, el mes y el año.
      */
-    getEvolucionDolarOficial = async (req, res) => {
+    async getEvolucionDolarOficial(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
-            const valores = this.util.getEvolucion(data.cotiza.evolucion_dolar.oficial.anio)
+            const data = await dolarSiService.getInfoDolar()
+            const valores = util.getEvolucion(data.cotiza.evolucion_dolar.oficial.anio)
 
             res.send(valores)
         } catch (e) {
@@ -143,10 +142,10 @@ class dolarController {
      * @description Obtiene la evolución anual del valor del dolar blue
      * @returns Un objeto con el valor promedio por mes, el mes y el año.
      */
-    getEvolucionDolarBlue = async (req, res) => {
+    async getEvolucionDolarBlue(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
-            const valores = this.util.getEvolucion(data.cotiza.evolucion_dolar.blue.anio)
+            const data = await dolarSiService.getInfoDolar()
+            const valores = util.getEvolucion(data.cotiza.evolucion_dolar.blue.anio)
 
             res.send(valores)
         } catch (e) {
@@ -159,26 +158,34 @@ class dolarController {
      * @description Obtiene el valor para la venta del dolar turista
      * @returns Un objeto con el valor de venta y la fecha y hora de la consulta.
     */
-    getDolarTurista = async (req, res) => {
+    async getDolarTurista(req, res) {
         try {
-          const data = await this.dolarSiService.getInfoDolar();
+            const data = await dolarSiService.getInfoDolar();
 
-          const valores = {
-            fecha: this.util.getDateTime(),
-            compra: this.util.formatNumber(
-              data.cotiza.valores_principales.casa406.compra._text
-            ),
-            venta: this.util.formatNumber(
-              data.cotiza.valores_principales.casa406.venta._text
-            ),
-          };
-            
-          res.send(valores);
+            const valores = {
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(
+                    data.cotiza.valores_principales.casa406.compra._text
+                ),
+                venta: util.formatNumber(
+                    data.cotiza.valores_principales.casa406.venta._text
+                ),
+            };
+
+            res.send(valores);
         } catch (e) {
-          res.sendStatus(500);
-          console.log(e);
+            res.sendStatus(500);
+            console.log(e);
         }
     }
 }
-
-module.exports = dolarController
+const dolarController = new DolarController();
+const dolarControllerMap = {
+    oficial: dolarController.getDolarOficial,
+    blue: dolarController.getDolarBlue,
+    contadoliqui: dolarController.getContadoConLiqui,
+    promedio: dolarController.getDolarPromedio,
+    bolsa: dolarController.getDolarBolsa,
+    turista: dolarController.getDolarTurista,
+};
+module.exports = { dolarControllerMap, dolarController };

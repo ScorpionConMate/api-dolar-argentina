@@ -1,19 +1,18 @@
-class riesgoController {
-    constructor(dolarSiService, util) {
-        this.dolarSiService = dolarSiService
-        this.util = util
-    }
+const dolarSiService = require('../services/dolarSiService');
+const util = require('../util/util');
+
+class RiesgoController {
 
     /**
      * @description Obtener el valor del riesgo pais
      * @returns Un objeto con el valor del riesgo pais y la fecha y hora de la consulta
      */
-    getRiesgoPais = async (req, res) => {
+    async getRiesgoPais(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                valor: this.util.formatNumber(data.cotiza.Riesgo_pais.casa141.compra._text, 3),
+                fecha: util.getDateTime(),
+                valor: util.formatNumber(data.cotiza.Riesgo_pais.casa141.compra._text, 3),
             }
 
             res.send(valores)
@@ -24,4 +23,4 @@ class riesgoController {
     }
 }
 
-module.exports = riesgoController
+module.exports = new RiesgoController();

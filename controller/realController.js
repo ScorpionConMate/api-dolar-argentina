@@ -1,20 +1,18 @@
-class realController {
-    constructor(dolarSiService, util) {
-        this.dolarSiService = dolarSiService
-        this.util = util
-    }
+const dolarSiService = require('../services/dolarSiService')
+const util = require('../util/util')
 
+class RealController {
     /**
      * @description Obtener el valor del real del Banco Nación
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getRealNacion = async (req, res) => {
+    async getRealNacion(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Real.casa230.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Real.casa230.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Real.casa230.compra._text),
+                venta: util.formatNumber(data.cotiza.Real.casa230.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -27,13 +25,13 @@ class realController {
      * @description Obtener el valor del real del Banco BBVA
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getRealBBVA = async (req, res) => {
+    async getRealBBVA(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Real.casa365.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Real.casa365.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Real.casa365.compra._text),
+                venta: util.formatNumber(data.cotiza.Real.casa365.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -46,13 +44,13 @@ class realController {
      * @description Obtener el valor del real del Nuevo Banco del Chaco
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getRealChaco = async (req, res) => {
+    async getRealChaco(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await dolarSiService.getInfoDolar()
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Real.casa366.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Real.casa366.venta._text)
+                fecha: util.getDateTime(),
+                compra: util.formatNumber(data.cotiza.Real.casa366.compra._text),
+                venta: util.formatNumber(data.cotiza.Real.casa366.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -65,10 +63,10 @@ class realController {
      * @description Obtiene la evolución anual del valor del real
      * @returns Un objeto con el valor promedio por mes, el mes y el año.
      */
-    getEvolucionReal = async (req, res) => {
+    async getEvolucionReal(req, res) {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
-            const valores = this.util.getEvolucion(data.cotiza.evolucion_dolar.real.anio)
+            const data = await dolarSiService.getInfoDolar()
+            const valores = util.getEvolucion(data.cotiza.evolucion_dolar.real.anio)
 
             res.send(valores)
         } catch (e) {
@@ -78,4 +76,10 @@ class realController {
     }
 }
 
-module.exports = realController
+const realController = new RealController();
+const realControllerMap = {
+    nacion: realController.getRealNacion,
+    bbva: realController.getRealBBVA,
+    chaco: realController.getRealChaco,
+};
+module.exports = { realControllerMap, realController };

@@ -3,34 +3,31 @@
 Obtene las diferentes cotizaciones del dólar, euro, reservas, evolucion y riesgo pais.
 
 ## Endpoints
-URL: https://api-dolar-argentina.herokuapp.com/
-
-URL backup: https://api-dolar-argentina-2.herokuapp.com/
+URL: http://localhost:7070/
 
 | Metodo | Endpoint | Descripcion |
 | ------ | ------ | ------ |
-| GET | /api/dolaroficial | Cotizacion dólar oficial |
-| GET | /api/dolarblue | Cotizacion dólar blue |
-| GET | /api/contadoliqui | Cotizacion dólar contado con liqui |
-| GET | /api/dolarpromedio | Cotizacion dólar promedio |
-| GET | /api/dolarturista | Cotizacion dólar turista |
-| GET | /api/dolarbolsa | Cotizacion dólar bolsa |
-| GET | /api/riesgopais | Valor riesgo pais |
-| GET | /api/bbva | Cotizacion dolar del Banco BBVA |
-| GET | /api/piano | Cotizacion dolar del Banco Piano |
-| GET | /api/hipotecario | Cotizacion dolar del Banco Hipotecario |
-| GET | /api/galicia | Cotizacion dolar del Banco Galicia |
-| GET | /api/santander | Cotizacion dolar del Banco Santander |
-| GET | /api/ciudad | Cotizacion dolar del Banco Ciudad |
-| GET | /api/supervielle | Cotizacion dolar del Banco Supervielle |
-| GET | /api/patagonia | Cotizacion dolar del Banco Patagonia |
-| GET | /api/comafi | Cotizacion dolar del Banco Comafi |
-| GET | /api/nacion | Cotizacion dolar del Banco Nación |
-| GET | /api/bind | Cotizacion dolar del Banco Industrial |
-| GET | /api/bancor | Cotizacion dolar del Banco de Córdoba |
-| GET | /api/chaco | Cotizacion dolar del Nuevo Banco del Chaco |
-| GET | /api/pampa | Cotizacion dolar del Banco de La Pampa |
-| GET | /api/mayorista | Cotizacion dolar Mayorista Bancos|
+| GET | /api/dolar/oficial | Cotizacion dólar oficial |
+| GET | /api/dolar/blue | Cotizacion dólar blue |
+| GET | /api/dolar/contadoliqui | Cotizacion dólar contado con liqui |
+| GET | /api/dolar/promedio | Cotizacion dólar promedio |
+| GET | /api/dolar/bolsa | Cotizacion dólar bolsa |
+| GET | /api/dolar/turista | Cotizacion dólar turista |
+| GET | /api/bancos/bbva | Cotizacion dolar del Banco BBVA |
+| GET | /api/bancos/piano | Cotizacion dolar del Banco Piano |
+| GET | /api/bancos/hipotecario | Cotizacion dolar del Banco Hipotecario |
+| GET | /api/bancos/galicia | Cotizacion dolar del Banco Galicia |
+| GET | /api/bancos/santander | Cotizacion dolar del Banco Santander |
+| GET | /api/bancos/ciudad | Cotizacion dolar del Banco Ciudad |
+| GET | /api/bancos/supervielle | Cotizacion dolar del Banco Supervielle |
+| GET | /api/bancos/patagonia | Cotizacion dolar del Banco Patagonia |
+| GET | /api/bancos/comafi | Cotizacion dolar del Banco Comafi |
+| GET | /api/bancos/nacion | Cotizacion dolar del Banco Nación |
+| GET | /api/bancos/bind | Cotizacion dolar del Banco Industrial |
+| GET | /api/bancos/chaco | Cotizacion dolar del Nuevo Banco del Chaco |
+| GET | /api/bancos/pampa | Cotizacion dolar del Banco de La Pampa |
+| GET | /api/bancos/bancor | Cotizacion dolar del Banco de Córdoba |
+| GET | /api/bancos/mayorista | Cotizacion dolar Mayorista Bancos|
 | GET | /api/casas/caba/metropolis | Cotizacion dolar de Metrópolis Compañía Financiera S.A |
 | GET | /api/casas/caba/alpe | Cotizacion dolar de Cambio Alpe S.A |
 | GET | /api/casas/caba/vaccaro | Cotizacion dolar de Francisco Vaccaro S.A |
@@ -58,8 +55,9 @@ URL backup: https://api-dolar-argentina-2.herokuapp.com/
 | GET | /api/evolucion/realoficial | Evolución mensual anualizada del Real oficial |
 | GET | /api/evolucion/eurooficial | Evolución mensual anualizada del Euro oficial |
 | GET | /api/all | Todos los valores disponbiles
+| GET | /api/riesgopais | Valor riesgo pais |
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/409e96f2e356a5a1c14e)
+<!-- [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/409e96f2e356a5a1c14e) -->
 
 ### Respuestas
 
